@@ -1,0 +1,15 @@
+{
+  "name": "Quant AI Python 3.11",
+  "build": {"dockerfile": "Dockerfile", "context": ".."},
+  "workspaceFolder": "/workspaces/quant-ai",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/quant-ai,type=bind",
+  "remoteUser": "vscode",
+  "mounts": ["source=quant-ai-venv-py311,target=/opt/venv,type=volume"],
+  "containerEnv": {"UV_PROJECT_ENVIRONMENT": "/opt/venv"},
+  "postCreateCommand": "uv sync --locked --group dev && python -m ipykernel install --prefix /opt/venv --name quant-ai --display-name 'Python 3.11 (quant-ai)'",
+  "customizations": {"vscode": {
+    "settings": {"python.defaultInterpreterPath": "/opt/venv/bin/python"},
+    "extensions": ["ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter", "charliermarsh.ruff", "openai.chatgpt"]
+  }},
+  "forwardPorts": [8888]
+}

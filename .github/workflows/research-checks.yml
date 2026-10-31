@@ -1,0 +1,41 @@
+name: Research checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MPLBACKEND: Agg
+      MPLCONFIGDIR: ${{ github.workspace }}/.cache/matplotlib
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          version: '0.10.10'
+          python-version: '3.11.14'
+          enable-cache: false
+      - name: Install locked dependencies
+        run: uv sync --locked --group dev
+      - name: Audit published files and history
+        run: uv run --no-sync python scripts/audit_publication.py --history
+      - name: Unit and integration tests
+        run: uv run --no-sync pytest -q
+      - name: Ruff
+        run: |
+          uv run --no-sync ruff check src tests scripts
+          uv run --no-sync ruff format --check src tests scripts
+      - name: Execute synthetic teaching notebooks without market downloads
+        run: |
+          uv run --no-sync python -m ipykernel install --prefix .venv --name quant-ai --display-name 'Python (quant-ai)'
+          uv run --no-sync python scripts/execute_notebooks.py '01_CAPMと市場リスク.ipynb' '02_平均分散とポートフォリオ最適化.ipynb' '03_ファクターモデル.ipynb' '04_機械学習と運用評価.ipynb' '05_Qlibによるクオンツ分析.ipynb'

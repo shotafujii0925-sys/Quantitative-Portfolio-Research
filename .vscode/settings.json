@@ -1,0 +1,22 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {"source.fixAll.ruff": "explicit", "source.organizeImports.ruff": "explicit"}
+  },
+  "files.exclude": {
+    "**/.venv": true, "**/.python": true, "**/.uv-cache": true,
+    "**/.cache": true, "**/.pytest_cache": true, "**/.ruff_cache": true,
+    "**/.pytest-tmp": true, "**/__pycache__": true
+  },
+  "search.exclude": {
+    "**/.venv": true, "**/.python": true, "**/.uv-cache": true,
+    "**/.cache": true, "**/.pytest-tmp": true, "**/data": true, "**/分析結果": true
+  }
+}
