@@ -1,11 +1,10 @@
-# Quantitative Portfolio Research
+Quantitative Portfolio Research
 
 [![Research checks](https://github.com/shotafujii0925-sys/Quantitative-Portfolio-Research/actions/workflows/research-checks.yml/badge.svg)](https://github.com/shotafujii0925-sys/Quantitative-Portfolio-Research/actions/workflows/research-checks.yml)
 
 金融工学の数式・Python実装・検証を対応させる個人研究プロジェクトです。
 SPY・TLT・GLDを対象に、過去のリスク特性を使う資産配分とボラティリティ・ターゲティング（VT）を比較します。
-アセットマネジメントOne「クオンツ運用・AIコース」のインターン準備を契機に取り組みました。
-同社の公式研究・推奨戦略ではなく、同社がQlibを採用しているという前提も置きません。
+インターン準備を契機に取り組みました。
 
 ## 研究の問いと主要結果
 
