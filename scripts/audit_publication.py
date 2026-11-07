@@ -97,7 +97,8 @@ def scan_text(text: str) -> list[str]:
             matches = [
                 x
                 for x in matches
-                if not x.endswith("@users.noreply.github.com") and x != "noreply@anthropic.com"
+                if not x.endswith("@users.noreply.github.com")
+                and x not in {"noreply@github.com", "noreply@anthropic.com"}
             ]
         if matches:
             issues.append(kind)
