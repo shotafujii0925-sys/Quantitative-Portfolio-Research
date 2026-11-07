@@ -46,6 +46,11 @@ dist/
 !outputs/figures/市場環境別VT直接比較/04_ペアブロック再標本化の区間.png
 !outputs/figures/戦略比較と収益分解/02_非レバとVTの成績比較.png
 !outputs/figures/戦略比較と収益分解/03_CAGR差の要因分解.png
+!outputs/reports/VIXボラ目標_分析レポート.md
+!outputs/figures/VIXボラ目標/
+!outputs/figures/VIXボラ目標/01_予測ボラ別の成績.png
+!outputs/figures/VIXボラ目標/02_予測精度とSharpe差.png
+!outputs/figures/VIXボラ目標/03_倍率と局面別の損益.png
 *.xml
 *.csv
 *.xlsx

@@ -13,6 +13,10 @@ PUBLIC_OUTPUTS = {
     "outputs/reports/リスク統一比較_分析レポート.md",
     "outputs/reports/戦略比較と収益分解_分析レポート.md",
     "outputs/reports/市場環境に依存しない優位性の検証.md",
+    "outputs/reports/VIXボラ目標_分析レポート.md",
+    "outputs/figures/VIXボラ目標/01_予測ボラ別の成績.png",
+    "outputs/figures/VIXボラ目標/02_予測精度とSharpe差.png",
+    "outputs/figures/VIXボラ目標/03_倍率と局面別の損益.png",
     "outputs/figures/市場環境別VT直接比較/01_VT同士の直接比較.png",
     "outputs/figures/市場環境別VT直接比較/02_ローリング期間の優劣.png",
     "outputs/figures/市場環境別VT直接比較/03_市場局面と暦期間の比較.png",
@@ -90,7 +94,11 @@ def scan_text(text: str) -> list[str]:
     for kind, pattern in PATTERNS.items():
         matches = pattern.findall(text)
         if kind == "email":
-            matches = [x for x in matches if not x.endswith("@users.noreply.github.com")]
+            matches = [
+                x
+                for x in matches
+                if not x.endswith("@users.noreply.github.com") and x != "noreply@anthropic.com"
+            ]
         if matches:
             issues.append(kind)
     return issues

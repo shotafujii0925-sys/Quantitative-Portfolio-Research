@@ -41,6 +41,7 @@ SPY・TLT・GLDを対象に、過去のリスク特性を使う資産配分と�
 |---|---|
 |主要な検証結果と限界|[市場環境に依存しない優位性の検証](outputs/reports/市場環境に依存しない優位性の検証.md)|
 |VT、金利、レバレッジ、推定窓の比較|[リスク統一比較レポート](outputs/reports/リスク統一比較_分析レポート.md)|
+|VIXによるボラ予測とVTの比較|[VIXボラ目標レポート](outputs/reports/VIXボラ目標_分析レポート.md)|
 |配分・倍率・調達費用の分解|[収益要因分解レポート](outputs/reports/戦略比較と収益分解_分析レポート.md)|
 |数学・実装の学習|[Notebookと実装案内](資料/07_研究コードと成果物の案内.md)|
 |公開範囲と検証|[公開前監査と検証](資料/公開前監査と検証.md)|
@@ -58,6 +59,7 @@ Notebookは日本語の目的・理論・データ・条件・実装・可視化
 - キャッシュ・借入、取引費用、調達金利、実際の売買額を追う自己資金台帳。
 - CAGR差の比較経路、日次損益恒等式、年率対数差、実支払額を区別した収益分解。
 - ペアブロック再標本化、ローリング、暦期間、前日情報での市場局面分析。
+- SPYのボラ予測をVIXに置き換えたボラ目標の比較（[研究計画](資料/VIXボラ目標_研究計画.md)）。
 - 線形/Ridge/Lasso/Random Forest/LightGBMとMicrosoft Qlibの学習環境。
 
 01〜05の教材とQlibデモは**合成データ**です。実市場での予測能力を実証したものではありません。
@@ -112,6 +114,9 @@ uv run --no-sync python scripts/run_risk_normalized_study.py
 uv run --no-sync python scripts/check_risk_research.py
 uv run --no-sync python scripts/run_return_attribution.py
 uv run --no-sync python scripts/check_market_independence.py
+uv run --no-sync python scripts/fetch_vix_data.py
+uv run --no-sync python scripts/run_vix_study.py
+uv run --no-sync python scripts/build_vix_report.py
 uv run --no-sync python scripts/execute_notebooks.py
 ```
 
